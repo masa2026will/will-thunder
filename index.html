@@ -769,9 +769,67 @@ const normalQuestions=[
   {q:'正三角形',a:['60'],hint:'1つの角の大きさを考えよう'},
   {q:'君が主役！ 君の数字をそろえろ！',a:[],hint:'誕生日・年齢・テストの点数・体重など、自分に関係する数字を宣言！'}
 ];
+const answerReasons={
+'日本':['都道府県の数','主な4つの島'], '東京都':['特別区の数'], '横浜':['行政区の数'], '千葉':['市町村の数'], '沖縄':['市町村の数'], '埼玉':['市町村の数'], '北海道':['総合振興局・振興局の数'], '都道府県':['日本の都道府県数'], '政令指定都市':['政令指定都市の数'], '選挙':['選挙権年齢','衆議院議員などの任期の例'], '国会':['衆議院と参議院の二院'], '消費税':['標準税率','軽減税率'], '硬貨':['通常使われる硬貨の種類'], '紙幣':['現在の通常券種の数'], '日本国憲法':['基本原則の数'], 'SDGs':['目標の数'], 'G7':['主要7か国'], '裁判員制度':['裁判員の人数'], '信号機':['基本の色の数'], '日本のユネスコ世界遺産':['登録件数の例'], '東北新幹線':['東京〜新青森の駅数の例'], '山手線':['駅の数'], '箱根駅伝':['片道の区間数','往復の区間数'], '都道府県知事':['任期4年'], '衆議院':['任期4年'], '参議院':['任期6年'], '野球':['3アウト','4つの塁（本塁含む）','守備につく人数'], 'サッカー':['1チームの人数','前後半それぞれ45分','通常の試合時間'], 'イチロー':['代表的な背番号51'], 'マラドーナ':['「5人抜き」','代表的な背番号10'], 'オリンピック':['五輪マークの輪の数','原則4年ごと'], '甲子園':['野球の守備人数'], '大相撲':['年間本場所の数'], 'バスケットボール':['コート上の1チーム人数'], 'バレーボール':['コート上の1チーム人数'], 'ラグビー':['15人制の1チーム人数'], 'ゴルフ':['1ラウンドのホール数'], 'ボウリング':['1ゲームのフレーム数'], 'トランプ':['赤・黒の2色','4つのスート','1スート13枚','ジョーカーを除く総枚数'], '時計':['文字盤の数字','1日の時間','1時間の分数'], '1日':['24時間'], '1年':['12か月','平年の日数'], '成人':['日本の成年年齢'], '十二支':['十二支の数'], '七福神':['神様の数'], '虹':['一般的に数える色の数'], 'じゃんけん':['グー・チョキ・パーの3種類'], '皇居一周':['およそ5km'], '将棋':['盤は9×9'], 'オセロ':['盤の1辺8マス','盤全体64マス'], '麻雀':['基本のプレイヤー人数'], '星座':['黄道十二星座'], '五大陸':['大陸の数'], '音階':['ドレミファソラシの7音'], '1/4':['25％'], '直角':['90度'], '三角形の内角':['内角の和180度'], '一周の角度':['360度'], '正三角形':['1つの角が60度']
+};
+const extraQuestions=[
+ {q:'クリスマス',a:['12','24','25'],hint:'月や日付から数字を連想しよう'},
+ {q:'バレンタインデー',a:['2','14'],hint:'月と日付から考えよう'},
+ {q:'ハロウィン',a:['10','31'],hint:'月と日付から考えよう'},
+ {q:'元日',a:['1'],hint:'月・日から考えよう'},
+ {q:'こどもの日',a:['5'],hint:'何月何日？'},
+ {q:'七夕',a:['7'],hint:'何月何日？'},
+ {q:'いい夫婦の日',a:['11','22'],hint:'月と語呂合わせの日付'},
+ {q:'富士山',a:['3776'],hint:'標高から考えよう'},
+ {q:'東京スカイツリー',a:['634'],hint:'高さから考えよう'},
+ {q:'東京タワー',a:['333'],hint:'高さから考えよう'},
+ {q:'日本の国番号',a:['81'],hint:'国際電話の番号'},
+ {q:'救急車',a:['119'],hint:'緊急通報の番号'},
+ {q:'警察',a:['110'],hint:'緊急通報の番号'},
+ {q:'円周率',a:['3','14'],hint:'3.14からカードで表せる数字を考えよう'},
+ {q:'サイコロ',a:['6','21'],hint:'面の数や目の合計'},
+ {q:'チェス',a:['8','64'],hint:'盤の1辺や全マス数'},
+ {q:'百人一首',a:['100'],hint:'名前そのものがヒント'},
+ {q:'煩悩',a:['108'],hint:'除夜の鐘を思い出そう'},
+ {q:'干支の一周',a:['12'],hint:'十二支は何種類？'},
+ {q:'一週間',a:['7'],hint:'曜日の数'},
+ {q:'一時間',a:['60'],hint:'何分？'},
+ {q:'一分',a:['60'],hint:'何秒？'},
+ {q:'半日',a:['12'],hint:'何時間？'},
+ {q:'四季',a:['4'],hint:'春夏秋冬'},
+ {q:'指',a:['5','10'],hint:'片手・両手で考えよう'},
+ {q:'人の歯',a:['32'],hint:'大人の永久歯を親知らず込みで考えよう'},
+ {q:'干支・午',a:['7'],hint:'十二支の何番目？'},
+ {q:'野球のイニング',a:['9'],hint:'通常は何回まで？'},
+ {q:'サッカーのPK戦',a:['5'],hint:'最初は各チーム何人ずつ蹴る？'},
+ {q:'バスケのゴール',a:['2','3'],hint:'通常の得点と3ポイント'},
+ {q:'テニス',a:['15','30','40'],hint:'ゲーム内の得点の数え方'},
+ {q:'卓球',a:['11'],hint:'1ゲームは原則何点先取？'},
+ {q:'ボクシング',a:['10','12'],hint:'ダウンのカウントや世界戦ラウンド数'},
+ {q:'F1',a:['1'],hint:'名前そのものにも数字がある'},
+ {q:'白雪姫',a:['7'],hint:'一緒に暮らす小人の数'},
+ {q:'ドラゴンボール',a:['7'],hint:'集める球の数'},
+ {q:'七つの海',a:['7'],hint:'名前そのものがヒント'},
+ {q:'五感',a:['5'],hint:'視覚・聴覚などの数'},
+ {q:'三原色',a:['3'],hint:'名前そのものがヒント'},
+ {q:'九九',a:['9','81'],hint:'9の段まで・9×9の組合せ'},
+ {q:'100円玉10枚',a:['1000'],hint:'合計金額を考えよう'},
+ {q:'1ダース',a:['12'],hint:'何個？'},
+ {q:'半分',a:['2','50'],hint:'2分の1・50％'},
+ {q:'四半期',a:['3','4'],hint:'1区切りの月数・1年の区切り数'},
+ {q:'電話の数字キー',a:['10'],hint:'0〜9はいくつ？'}
+];
+Object.assign(answerReasons,{
+'クリスマス':['12月','クリスマスイブは24日','クリスマスは25日'],'バレンタインデー':['2月','14日'],'ハロウィン':['10月','31日'],'元日':['1月1日'],'こどもの日':['5月5日'],'七夕':['7月7日'],'いい夫婦の日':['11月','22日'],'富士山':['標高3,776m'],'東京スカイツリー':['高さ634m'],'東京タワー':['高さ333m'],'日本の国番号':['国際電話の国番号+81'],'救急車':['119番'],'警察':['110番'],'円周率':['整数部分3','小数部分の最初が14'],'サイコロ':['6面','1〜6の目の合計21'],'チェス':['盤は8×8','全64マス'],'百人一首':['100人の歌'],'煩悩':['108とされる'],'干支の一周':['十二支で12年'],'一週間':['7日'],'一時間':['60分'],'一分':['60秒'],'半日':['12時間'],'四季':['春夏秋冬の4つ'],'指':['片手5本','両手10本'],'人の歯':['永久歯は親知らず込みで最大32本'],'干支・午':['午は十二支の7番目'],'野球のイニング':['通常9回'],'サッカーのPK戦':['最初は各チーム5人'],'バスケのゴール':['通常のフィールドゴール2点','3ポイントシュート3点'],'テニス':['15点','30点','40点'],'卓球':['1ゲーム11点先取が原則'],'ボクシング':['10カウント','世界タイトル戦は12ラウンド'],'F1':['Formula 1'],'白雪姫':['7人の小人'],'ドラゴンボール':['7個集める'],'七つの海':['7つ'],'五感':['5種類'],'三原色':['3色'],'九九':['9の段まで','9×9=81'],'100円玉10枚':['合計1,000円'],'1ダース':['12個'],'半分':['2分の1','50％'],'四半期':['3か月','1年を4分割'],'電話の数字キー':['0〜9の10個']
+});
+normalQuestions.splice(normalQuestions.length-1,0,...extraQuestions);
+
 let bag=[],currentAnswers=[],normalSinceHighLow=0,lastSpecial='';
-function refillBag(){bag=[...Array(normalQuestions.length).keys()].sort(()=>Math.random()-.5)}
-function drawQuestion(){if(!bag.length)refillBag();return normalQuestions[bag.pop()]}
+const RECENT_KEY='willThunderRecentQuestionsV2';
+function getRecent(){try{return JSON.parse(localStorage.getItem(RECENT_KEY)||'[]')}catch(e){return []}}
+function rememberQuestion(q){try{let r=getRecent().filter(x=>x!==q);r.unshift(q);localStorage.setItem(RECENT_KEY,JSON.stringify(r.slice(0,25)))}catch(e){}}
+function refillBag(){const recent=new Set(getRecent());let idx=[...Array(normalQuestions.length).keys()].filter(i=>!recent.has(normalQuestions[i].q));if(idx.length<20)idx=[...Array(normalQuestions.length).keys()];bag=idx.sort(()=>Math.random()-.5)}
+function drawQuestion(){if(!bag.length)refillBag();const x=normalQuestions[bag.pop()];rememberQuestion(x.q);return x}
 
 function fitQuestion(el){
   el.classList.remove('long','xlong');
@@ -903,8 +961,10 @@ function setDisplay(mode,q,a=[],h='',useTimer=true){
   fitQuestion(question);
   currentAnswers=(a||[]).map(String);
   hint.textContent='ヒント：'+h;
+  const reasons=answerReasons[q]||[];
+  const examples=currentAnswers.map((v,i)=>`<strong>${v}</strong>${reasons[i]?`（${reasons[i]}）`:''}`).join(' ・ ');
   answer.innerHTML=currentAnswers.length
-    ?`例えば：<strong>${currentAnswers.join(' ・ ')}</strong><br><span style="font-size:14px">※お題との関係を説明できれば、ほかの数字も正解にできます</span>`
+    ?`例えば：${examples}<br><span style="font-size:14px">※お題との関係を説明できれば、ほかの数字も正解にできます</span>`
     :'このお題はプレイヤーが答えを決めます';
   if(useTimer){
     document.querySelector('#normalScreen .timerCard').style.display='';
@@ -973,9 +1033,8 @@ function specialHighLow(){
   });
 }
 function nextQuestion(){
-  if(normalSinceHighLow>=7&&lastSpecial!=='highlow'){specialHighLow();normalSinceHighLow=0;lastSpecial='highlow';return}
   if(Math.random()<.20){
-    let c=[{id:'highlow',w:4,fn:specialHighLow},{id:'thunder30',w:3,fn:specialThunder30},{id:'connect',w:3,fn:specialConnect}].filter(e=>e.id!==lastSpecial);
+    let c=[{id:'highlow',w:1,fn:specialHighLow},{id:'thunder30',w:1,fn:specialThunder30},{id:'connect',w:1,fn:specialConnect}].filter(e=>e.id!==lastSpecial);
     let r=Math.random()*c.reduce((n,e)=>n+e.w,0),chosen=c[0];
     for(const e of c){r-=e.w;if(r<=0){chosen=e;break}}
     chosen.fn();lastSpecial=chosen.id;if(chosen.id==='highlow')normalSinceHighLow=0;else normalSinceHighLow++;return;
